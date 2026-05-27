@@ -151,6 +151,43 @@ tr:hover td{background:var(--s2);}
 /* CHARTS ROW */
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 @media(max-width:800px){.charts-row{grid-template-columns:1fr;}}
+
+@media(max-width:600px){
+  .wrap{padding:0 10px 60px;}
+  .header{padding:0 14px;}
+  .header-logo img{height:40px;}
+  .header-title{font-size:.6rem;}
+  .header-title strong{font-size:.9rem;}
+  .page-title{font-size:1.1rem;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .falt-kpi{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .zona-row{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .charts-row{grid-template-columns:1fr;}
+  .kc-big{font-size:2.2rem;}
+  .zt-val{font-size:1.4rem;}
+  .filtros{padding:10px 12px;gap:6px;}
+  .fbtn{padding:5px 10px;font-size:.68rem;}
+  .upload-bar{padding:10px 12px;gap:8px;}
+  .upload-btn{padding:8px 14px;font-size:.72rem;}
+  .download-btn{padding:8px 14px;font-size:.72rem;}
+  .nav-tab{padding:8px 12px;font-size:.75rem;letter-spacing:1px;}
+  .tbl-panel{padding:14px 10px;}
+  .chart-panel{padding:14px 12px;}
+  table{font-size:.72rem;}
+  th{font-size:.6rem;padding:8px 8px;}
+  td{padding:6px 8px;font-size:.72rem;}
+  .srch{width:160px;}
+  /* DVX charts bigger on mobile */
+  #dvx-chart-cronos, #dvx-chart-dakota, #dvx-chart-titano{height:300px !important;}
+  .chart-wrap{height:200px;}
+  /* More space between DVX charts */
+  .chart-panel{margin-bottom:20px !important;}
+  /* Bigger datalabels on mobile */
+  .atab{padding:6px 10px;font-size:.68rem;}
+  .stab{padding:6px 10px;font-size:.68rem;}
+  .pag-btn{padding:5px 10px;}
+  select{font-size:.72rem;padding:5px 8px;}
+}
 </style>
 </head>
 <body>
@@ -163,8 +200,8 @@ tr:hover td{background:var(--s2);}
 <div class="subheader">
   <div class="page-title">Giro Industrial</div>
   <div class="hright">
-    <span class="badge" id="date-badge">25/05/2026</span>
-    <span class="badge highlight" id="total-badge">418 CHASIS</span>
+    <span class="badge" id="date-badge">27/05/2026</span>
+    <span class="badge highlight" id="total-badge">419 CHASIS</span>
     <span class="badge warn" id="falt-badge">169 CHASIS C/FALTANTE</span>
   </div>
 </div>
@@ -173,7 +210,7 @@ tr:hover td{background:var(--s2);}
 <div class="upload-bar">
   <button class="upload-btn" onclick="document.getElementById('fu-giro').click()">📂 CARGAR TABLAGIRO.xlsx</button>
   <input type="file" id="fu-giro" accept=".xlsx,.xls" style="display:none" onchange="loadGiro(this)">
-  <div class="upload-status" id="us-giro"><span class="udot"></span><span id="um-giro"></span></div>
+  <div class="upload-status visible" id="us-giro"><span class="udot"></span><span id="um-giro">TablaGIRO.xlsx · 419 chasis</span></div>
   <span class="embed-info">Giro: 25/05/2026 · 418 chasis</span>
 </div>
 <div class="upload-bar upload-bar-warn" style="margin-bottom:20px;">
@@ -186,20 +223,20 @@ tr:hover td{background:var(--s2);}
 <div class="upload-bar" style="margin-bottom:20px;border-left-color:#6644aa;">
   <button class="upload-btn" style="background:#6644aa;" onclick="document.getElementById('fu-dvx').click()">📂 CARGAR SEGUIMIENTO DVX/DRR.xlsx</button>
   <input type="file" id="fu-dvx" accept=".xlsx,.xls" style="display:none" onchange="loadDVX(this)">
-  <div class="upload-status visible" id="us-dvx"><span class="udot" style="background:#6644aa;"></span><span id="um-dvx">SEGUIMIENTO DVX_DRR.xlsx · 13 días cargados</span></div>
+  <div class="upload-status" id="us-dvx"><span class="udot" style="background:#6644aa;"></span><span id="um-dvx"></span></div>
   <span class="embed-info">DVX/DRR: datos embebidos</span>
 </div>
 
 <!-- NAV TABS -->
 <div class="nav-tabs">
-  <button class="nav-tab" onclick="switchTab('giro',this)">⬡ GIRO</button>
+  <button class="nav-tab active" onclick="switchTab('giro',this)">⬡ GIRO</button>
   <button class="nav-tab red-tab" onclick="switchTab('faltantes',this)">⚠ FALTANTES</button>
   <button class="nav-tab" onclick="switchTab('stock',this)">◈ STOCK ACTUAL</button>
-  <button class="nav-tab active" onclick="switchTab('dvx',this)">📈 DVX / DRR</button>
+  <button class="nav-tab" onclick="switchTab('dvx',this)">📈 DVX / DRR</button>
 </div>
 
 <!-- ══ GIRO ══ -->
-<div class="tab-content" id="tab-giro">
+<div class="tab-content active" id="tab-giro">
   <div class="filtros">
     <span class="flabel">Modelo</span>
     <div class="fgroup" id="fg-modelo">
@@ -219,10 +256,10 @@ tr:hover td{background:var(--s2);}
     </div>
     <div class="sep"></div>
     <span class="flabel">Versión</span>
-    <select id="sel-ver" onchange="setGVer(this.value)"><option value="TODAS">TODAS</option><option value="1C2">1C2</option><option value="1C4">1C4</option><option value="1H3">1H3</option><option value="1H5">1H5</option><option value="1H6">1H6</option><option value="1N3">1N3</option><option value="1N6">1N6</option><option value="2H0">2H0</option><option value="2L0">2L0</option><option value="2L1">2L1</option><option value="2N0">2N0</option><option value="2N1">2N1</option><option value="2X1">2X1</option><option value="AF2">AF2</option><option value="AFK">AFK</option><option value="AFU">AFU</option><option value="AFV">AFV</option><option value="AHV">AHV</option><option value="AL2">AL2</option><option value="ATH">ATH</option></select>
+    <select id="sel-ver" onchange="setGVer(this.value)"><option value="TODAS">TODAS</option><option value="1C2">1C2</option><option value="1C4">1C4</option><option value="1H3">1H3</option><option value="1H5">1H5</option><option value="1H6">1H6</option><option value="1N3">1N3</option><option value="1N6">1N6</option><option value="2H0">2H0</option><option value="2L0">2L0</option><option value="2L1">2L1</option><option value="2N0">2N0</option><option value="2N1">2N1</option><option value="2X1">2X1</option><option value="AF2">AF2</option><option value="AFU">AFU</option><option value="AFV">AFV</option><option value="AHV">AHV</option><option value="AL2">AL2</option><option value="ATH">ATH</option></select>
   </div>
-  <div class="kpi-row" id="g-kpi"><div class="kcard" style="--mc:var(--cronos)"><div class="kc-label">CRONOS</div><div class="kc-big">71</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">68</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">3</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">0</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">0</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--dakota)"><div class="kc-label">DAKOTA</div><div class="kc-big">257</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">191</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">5</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">4</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">7</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--titano)"><div class="kc-label">TITANO</div><div class="kc-big">90</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">70</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">9</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">2</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">8</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--total)"><div class="kc-label">TOTAL</div><div class="kc-big">418</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">329</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">17</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">6</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">15</div><div class="al">&gt;60D</div></div></div></div></div>
-  <div class="zona-row" id="g-zonas"><div class="zcard" onclick="setGZona('E-M',this)" style="--kc:#0066cc"><div class="zc-zona">E-M</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">24</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">48</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">15</span></div></div><div class="zc-total"><span class="zt-val">87</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('M-F',this)" style="--kc:#6644aa"><div class="zc-zona">M-F</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">4</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">29</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">1</span></div></div><div class="zc-total"><span class="zt-val">34</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('F-X',this)" style="--kc:#1a7a4a"><div class="zc-zona">F-X</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">29</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">140</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">66</span></div></div><div class="zc-total"><span class="zt-val">235</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('X-G',this)" style="--kc:#cc7700"><div class="zc-zona">X-G</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">14</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">40</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">8</span></div></div><div class="zc-total"><span class="zt-val">62</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('TODAS',this)" style="--kc:#1d3a8a"><div class="zc-zona">E-G</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">71</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">257</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">90</span></div></div><div class="zc-total"><span class="zt-val">418</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div></div>
+  <div class="kpi-row" id="g-kpi"><div class="kcard" style="--mc:var(--cronos)"><div class="kc-label">CRONOS</div><div class="kc-big">57</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">18</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">3</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">0</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">0</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--dakota)"><div class="kc-label">DAKOTA</div><div class="kc-big">217</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">154</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">6</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">3</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">8</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--titano)"><div class="kc-label">TITANO</div><div class="kc-big">145</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">59</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">8</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">2</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">7</div><div class="al">&gt;60D</div></div></div></div><div class="kcard" style="--mc:var(--total)"><div class="kc-label">TOTAL</div><div class="kc-big">419</div><div class="kc-sub">CHASIS E-G</div><div class="kc-alerts"><div class="mc-alert"><div class="av" style="color:var(--d2)">231</div><div class="al">&gt;2D</div></div><div class="mc-alert"><div class="av" style="color:var(--d30)">17</div><div class="al">&gt;30D</div></div><div class="mc-alert"><div class="av" style="color:var(--d50)">5</div><div class="al">&gt;50D</div></div><div class="mc-alert"><div class="av" style="color:var(--d60)">15</div><div class="al">&gt;60D</div></div></div></div></div>
+  <div class="zona-row" id="g-zonas"><div class="zcard" onclick="setGZona('E-M',this)" style="--kc:#0066cc"><div class="zc-zona">E-M</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">25</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">33</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">36</span></div></div><div class="zc-total"><span class="zt-val">94</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('M-F',this)" style="--kc:#6644aa"><div class="zc-zona">M-F</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">4</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">25</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">18</span></div></div><div class="zc-total"><span class="zt-val">47</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('F-X',this)" style="--kc:#1a7a4a"><div class="zc-zona">F-X</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">28</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">123</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">81</span></div></div><div class="zc-total"><span class="zt-val">232</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('X-G',this)" style="--kc:#cc7700"><div class="zc-zona">X-G</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">0</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">36</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">10</span></div></div><div class="zc-total"><span class="zt-val">46</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div><div class="zcard" onclick="setGZona('TODAS',this)" style="--kc:#1d3a8a"><div class="zc-zona">E-G</div><div class="zc-models"><div class="zm"><span class="zm-name" style="color:var(--cronos)">CRONOS</span><span class="zm-val" style="color:var(--cronos)">57</span></div><div class="zm"><span class="zm-name" style="color:var(--dakota)">DAKOTA</span><span class="zm-val" style="color:var(--dakota)">217</span></div><div class="zm"><span class="zm-name" style="color:var(--titano)">TITANO</span><span class="zm-val" style="color:var(--titano)">145</span></div></div><div class="zc-total"><span class="zt-val">419</span><span class="zt-lbl">TOTAL<br>CHASIS</span></div></div></div>
   <div class="chart-panel">
     <div class="cp-head">
       <span class="cp-title">Distribución por zona y modelo</span>
@@ -232,20 +269,20 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:var(--titano)"></div>TITANO</div>
       </div>
     </div>
-    <div class="chart-wrap"><canvas id="g-chart" width="1326" height="220" style="display: block; box-sizing: border-box; height: 220px; width: 1326px;"></canvas></div>
+    <div class="chart-wrap"><canvas id="g-chart" style="box-sizing: border-box; display: block; height: 220px; width: 1326px;" width="1326" height="220"></canvas></div>
   </div>
   <div class="alert-tabs">
-    <button class="atab at-all active" onclick="setGAlerta('TODOS',this)">TODOS <span class="cnt" id="g-cnt-all">418</span></button>
-    <button class="atab at-2" onclick="setGAlerta('&gt;2',this)">&gt;2D <span class="cnt" id="g-cnt-2">367</span></button>
-    <button class="atab at-30" onclick="setGAlerta('&gt;30',this)">&gt;30D <span class="cnt" id="g-cnt-30">38</span></button>
-    <button class="atab at-50" onclick="setGAlerta('&gt;50',this)">&gt;50D <span class="cnt" id="g-cnt-50">21</span></button>
+    <button class="atab at-all active" onclick="setGAlerta('TODOS',this)">TODOS <span class="cnt" id="g-cnt-all">419</span></button>
+    <button class="atab at-2" onclick="setGAlerta('&gt;2',this)">&gt;2D <span class="cnt" id="g-cnt-2">268</span></button>
+    <button class="atab at-30" onclick="setGAlerta('&gt;30',this)">&gt;30D <span class="cnt" id="g-cnt-30">37</span></button>
+    <button class="atab at-50" onclick="setGAlerta('&gt;50',this)">&gt;50D <span class="cnt" id="g-cnt-50">20</span></button>
     <button class="atab at-60" onclick="setGAlerta('&gt;60',this)">&gt;60D <span class="cnt" id="g-cnt-60">15</span></button>
   </div>
   <div class="tbl-panel">
     <div class="sec-head">
       <span class="sec-title">Chasis en planta</span>
       <div style="display:flex;align-items:center;gap:10px;">
-        <span class="tally" id="g-tally">418 resultados</span>
+        <span class="tally" id="g-tally">419 resultados</span>
         <input class="srch" type="text" placeholder="Buscar chasis..." oninput="setGSearch(this.value)">
       </div>
     </div>
@@ -254,7 +291,7 @@ tr:hover td{background:var(--s2);}
       <th onclick="gSortBy('ver')">VER ⇅</th><th onclick="gSortBy('zona')">ZONA ⇅</th>
       <th onclick="gSortBy('estacion')">ESTACIÓN ⇅</th><th onclick="gSortBy('dt_tr')">ENTRADA ⇅</th>
       <th onclick="gSortBy('dias')">DÍAS ⇅</th><th>ALERTA</th><th>FALTANTE</th>
-    </tr></thead><tbody id="g-tbody"><tr><td style="font-weight:600;">U901901</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>E-M</td><td>E2</td><td>06/02/2026</td><td class="days-60">108</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U902053</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>E-M</td><td>E2</td><td>10/02/2026</td><td class="days-60">104</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U710488</td><td class="tag-titano">TITANO</td><td>1H5</td><td>E-M</td><td>E2</td><td>23/02/2026</td><td class="days-60">91</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902935</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>04/03/2026</td><td class="days-60">82</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902911</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>04/03/2026</td><td class="days-60">82</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U903069</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>05/03/2026</td><td class="days-60">81</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902860</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>05/03/2026</td><td class="days-60">81</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U710804</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>07/03/2026</td><td class="days-60">79</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U710875</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>09/03/2026</td><td class="days-60">77</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U710790</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>09/03/2026</td><td class="days-60">77</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U903127</td><td class="tag-dakota">DAKOTA</td><td>2L1</td><td>F-X</td><td>F1</td><td>12/03/2026</td><td class="days-60">74</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U711189</td><td class="tag-titano">TITANO</td><td>1N6</td><td>F-X</td><td>F1</td><td>18/03/2026</td><td class="days-60">68</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U711550</td><td class="tag-titano">TITANO</td><td>1H5</td><td>X-G</td><td>X1</td><td>19/03/2026</td><td class="days-60">67</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U711483</td><td class="tag-titano">TITANO</td><td>1H5</td><td>X-G</td><td>X1</td><td>20/03/2026</td><td class="days-60">66</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U710497</td><td class="tag-titano">TITANO</td><td>1C2</td><td>X-G</td><td>X1</td><td>23/03/2026</td><td class="days-60">63</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U902882</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>26/03/2026</td><td class="days-50">60</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U711749</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>28/03/2026</td><td class="days-50">58</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U903822</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>31/03/2026</td><td class="days-50">55</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">3 faltantes</span></td></tr><tr><td style="font-weight:600;">U903811</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>31/03/2026</td><td class="days-50">55</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U711815</td><td class="tag-titano">TITANO</td><td>1H3</td><td>F-X</td><td>F1</td><td>01/04/2026</td><td class="days-50">54</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U903834</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>01/04/2026</td><td class="days-50">54</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">5 faltantes</span></td></tr><tr><td style="font-weight:600;">U712138</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>08/04/2026</td><td class="days-30">47</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U712216</td><td class="tag-titano">TITANO</td><td>1C4</td><td>E-M</td><td>E2</td><td>09/04/2026</td><td class="days-30">46</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U712187</td><td class="tag-titano">TITANO</td><td>1C4</td><td>F-X</td><td>F1</td><td>09/04/2026</td><td class="days-30">46</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U712093</td><td class="tag-titano">TITANO</td><td>1N3</td><td>X-G</td><td>X1</td><td>09/04/2026</td><td class="days-30">46</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--red);font-weight:700;">3 faltantes</span></td></tr></tbody></table>
+    </tr></thead><tbody id="g-tbody"><tr><td style="font-weight:600;">U901901</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>E-M</td><td>E2</td><td>06/02/2026</td><td class="days-60">110</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U902053</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>E-M</td><td>E2</td><td>10/02/2026</td><td class="days-60">106</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U710488</td><td class="tag-titano">TITANO</td><td>1H5</td><td>E-M</td><td>E2</td><td>23/02/2026</td><td class="days-60">93</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902935</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>04/03/2026</td><td class="days-60">84</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902911</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>04/03/2026</td><td class="days-60">84</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U903069</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>05/03/2026</td><td class="days-60">83</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U902860</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>05/03/2026</td><td class="days-60">83</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U710804</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>07/03/2026</td><td class="days-60">81</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U710875</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>09/03/2026</td><td class="days-60">79</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U710790</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>09/03/2026</td><td class="days-60">79</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U903127</td><td class="tag-dakota">DAKOTA</td><td>2L1</td><td>F-X</td><td>F1</td><td>12/03/2026</td><td class="days-60">76</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U711550</td><td class="tag-titano">TITANO</td><td>1H5</td><td>X-G</td><td>X1</td><td>19/03/2026</td><td class="days-60">69</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U711483</td><td class="tag-titano">TITANO</td><td>1H5</td><td>X-G</td><td>X1</td><td>20/03/2026</td><td class="days-60">68</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U710497</td><td class="tag-titano">TITANO</td><td>1C2</td><td>X-G</td><td>X1</td><td>23/03/2026</td><td class="days-60">65</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U902882</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>26/03/2026</td><td class="days-60">62</td><td><span class="badge-d d60">+60D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U711749</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>28/03/2026</td><td class="days-50">60</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U903822</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>31/03/2026</td><td class="days-50">57</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">3 faltantes</span></td></tr><tr><td style="font-weight:600;">U903811</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>F-X</td><td>F1</td><td>31/03/2026</td><td class="days-50">57</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U711815</td><td class="tag-titano">TITANO</td><td>1H3</td><td>F-X</td><td>F1</td><td>01/04/2026</td><td class="days-50">56</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">1 faltante</span></td></tr><tr><td style="font-weight:600;">U903834</td><td class="tag-dakota">DAKOTA</td><td>2N0</td><td>X-G</td><td>X1</td><td>01/04/2026</td><td class="days-50">56</td><td><span class="badge-d d50">+50D</span></td><td><span style="color:var(--red);font-weight:700;">5 faltantes</span></td></tr><tr><td style="font-weight:600;">U712138</td><td class="tag-titano">TITANO</td><td>1N3</td><td>F-X</td><td>F1</td><td>08/04/2026</td><td class="days-30">49</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--red);font-weight:700;">2 faltantes</span></td></tr><tr><td style="font-weight:600;">U712187</td><td class="tag-titano">TITANO</td><td>1C4</td><td>F-X</td><td>F1</td><td>09/04/2026</td><td class="days-30">48</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--muted2);">—</span></td></tr><tr><td style="font-weight:600;">U712093</td><td class="tag-titano">TITANO</td><td>1N3</td><td>X-G</td><td>X1</td><td>09/04/2026</td><td class="days-30">48</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--red);font-weight:700;">3 faltantes</span></td></tr><tr><td style="font-weight:600;">U712099</td><td class="tag-titano">TITANO</td><td>1N3</td><td>X-G</td><td>X1</td><td>11/04/2026</td><td class="days-30">46</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--red);font-weight:700;">3 faltantes</span></td></tr><tr><td style="font-weight:600;">U712268</td><td class="tag-titano">TITANO</td><td>1H5</td><td>F-X</td><td>F1</td><td>16/04/2026</td><td class="days-30">41</td><td><span class="badge-d d30">+30D</span></td><td><span style="color:var(--muted2);">—</span></td></tr></tbody></table>
     <div class="pag">
       <button class="pag-btn" onclick="gChangePage(-1)" id="g-prev" disabled="">◀ ANT</button>
       <span class="pag-info" id="g-pag">1/17</span>
@@ -356,7 +393,7 @@ tr:hover td{background:var(--s2);}
 
 
 <!-- ══ DVX / DRR ══ -->
-<div class="tab-content active" id="tab-dvx">
+<div class="tab-content" id="tab-dvx">
 
   <!-- FILTRO VISTA -->
   <div class="filtros" style="margin-bottom:20px;">
@@ -368,7 +405,7 @@ tr:hover td{background:var(--s2);}
   </div>
 
   <!-- KPI -->
-  <div class="kpi-row" id="dvx-kpi" style="margin-bottom:20px;"><div class="kcard" style="--mc:var(--cronos)"><div class="kc-label">CRONOS — SEMANA 21</div><div class="kc-big">1.08</div><div class="kc-sub">PROMEDIO DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--red)">▲ 0.01 vs S20</div></div><div class="kcard" style="--mc:var(--dakota)"><div class="kc-label">DAKOTA — SEMANA 21</div><div class="kc-big">4.84</div><div class="kc-sub">PROMEDIO DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--green)">▼ 0.56 vs S20</div></div><div class="kcard" style="--mc:var(--titano)"><div class="kc-label">TITANO — SEMANA 21</div><div class="kc-big">3.84</div><div class="kc-sub">PROMEDIO DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--green)">▼ 0.16 vs S20</div></div></div>
+  <div class="kpi-row" id="dvx-kpi" style="margin-bottom:20px;"></div>
 
   <!-- CRONOS -->
   <div class="chart-panel" style="margin-bottom:16px;">
@@ -379,7 +416,7 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.4)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:260px;"><canvas id="dvx-chart-cronos" style="box-sizing: border-box; display: block; height: 260px; width: 1326px;" width="1326" height="260"></canvas></div>
+    <div style="position:relative;height:280px;"><canvas id="dvx-chart-cronos"></canvas></div>
   </div>
 
   <!-- DAKOTA -->
@@ -391,7 +428,7 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(204,34,0,.4)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:260px;"><canvas id="dvx-chart-dakota" style="box-sizing: border-box; display: block; height: 260px; width: 1326px;" width="1326" height="260"></canvas></div>
+    <div style="position:relative;height:280px;"><canvas id="dvx-chart-dakota"></canvas></div>
   </div>
 
   <!-- TITANO -->
@@ -403,28 +440,28 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(204,119,0,.4)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:260px;"><canvas id="dvx-chart-titano" style="box-sizing: border-box; display: block; height: 260px; width: 1326px;" width="1326" height="260"></canvas></div>
+    <div style="position:relative;height:280px;"><canvas id="dvx-chart-titano"></canvas></div>
   </div>
 
   <!-- PROMEDIO SEMANAL -->
   <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
-      <span class="cp-title" id="dvx-sem-title">PROMEDIO SEMANAL — DVX</span>
+      <span class="cp-title" id="dvx-sem-title">PROMEDIO SEMANAL</span>
     </div>
-    <div style="position:relative;height:260px;"><canvas id="dvx-sem-chart" style="box-sizing: border-box; display: block; height: 260px; width: 1326px;" width="1326" height="260"></canvas></div>
+    <div style="position:relative;height:280px;"><canvas id="dvx-sem-chart"></canvas></div>
   </div>
 
   <!-- TABLA EMPEORÓ -->
   <div class="tbl-panel">
     <div class="sec-head">
       <span class="sec-title">⚠ DÍAS QUE EMPEORÓ</span>
-      <span class="tally" id="dvx-tally">27 registros</span>
+      <span class="tally" id="dvx-tally"></span>
     </div>
     <table>
       <thead><tr>
         <th>FECHA</th><th>MODELO</th><th>VALOR</th><th>DÍA ANTERIOR</th><th>VARIACIÓN</th><th>CON/SIN FALTANTE</th>
       </tr></thead>
-      <tbody id="dvx-tbody"><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.12</td><td style="color:var(--muted2)">4.09</td><td style="color:var(--red);font-weight:700;">▲ +4.03</td><td>Sin faltante</td></tr><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.12</td><td style="color:var(--muted2)">4.16</td><td style="color:var(--red);font-weight:700;">▲ +3.96</td><td>Con faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">6.25</td><td style="color:var(--muted2)">4.01</td><td style="color:var(--red);font-weight:700;">▲ +2.24</td><td>Sin faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.26</td><td style="color:var(--muted2)">6.11</td><td style="color:var(--red);font-weight:700;">▲ +2.15</td><td>Con faltante</td></tr><tr><td>7/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">6.11</td><td style="color:var(--muted2)">4.85</td><td style="color:var(--red);font-weight:700;">▲ +1.26</td><td>Con faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.59</td><td style="color:var(--muted2)">3.85</td><td style="color:var(--red);font-weight:700;">▲ +0.74</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.18</td><td style="color:var(--muted2)">3.49</td><td style="color:var(--red);font-weight:700;">▲ +0.69</td><td>Con faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.48</td><td style="color:var(--muted2)">3.83</td><td style="color:var(--red);font-weight:700;">▲ +0.65</td><td>Sin faltante</td></tr><tr><td>15/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.37</td><td style="color:var(--muted2)">3.8</td><td style="color:var(--red);font-weight:700;">▲ +0.57</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.52</td><td style="color:var(--muted2)">1.02</td><td style="color:var(--red);font-weight:700;">▲ +0.5</td><td>Con faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.4</td><td style="color:var(--muted2)">0.94</td><td style="color:var(--red);font-weight:700;">▲ +0.46</td><td>Sin faltante</td></tr><tr><td>12/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">5.61</td><td style="color:var(--muted2)">5.38</td><td style="color:var(--red);font-weight:700;">▲ +0.23</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.85</td><td style="color:var(--muted2)">3.67</td><td style="color:var(--red);font-weight:700;">▲ +0.18</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.85</td><td style="color:var(--muted2)">3.7</td><td style="color:var(--red);font-weight:700;">▲ +0.15</td><td>Con faltante</td></tr><tr><td>15/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">5.36</td><td style="color:var(--muted2)">5.24</td><td style="color:var(--red);font-weight:700;">▲ +0.12</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.04</td><td style="color:var(--red);font-weight:700;">▲ +0.1</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.16</td><td style="color:var(--muted2)">4.06</td><td style="color:var(--red);font-weight:700;">▲ +0.1</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.12</td><td style="color:var(--muted2)">1.03</td><td style="color:var(--red);font-weight:700;">▲ +0.09</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.12</td><td style="color:var(--muted2)">1.03</td><td style="color:var(--red);font-weight:700;">▲ +0.09</td><td>Sin faltante</td></tr><tr><td>11/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.08</td><td style="color:var(--muted2)">1</td><td style="color:var(--red);font-weight:700;">▲ +0.08</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.09</td><td style="color:var(--muted2)">4.01</td><td style="color:var(--red);font-weight:700;">▲ +0.08</td><td>Sin faltante</td></tr><tr><td>11/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.09</td><td style="color:var(--muted2)">1.02</td><td style="color:var(--red);font-weight:700;">▲ +0.07</td><td>Con faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.02</td><td style="color:var(--muted2)">0.97</td><td style="color:var(--red);font-weight:700;">▲ +0.05</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.1</td><td style="color:var(--red);font-weight:700;">▲ +0.04</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.12</td><td style="color:var(--red);font-weight:700;">▲ +0.02</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.13</td><td style="color:var(--muted2)">1.12</td><td style="color:var(--red);font-weight:700;">▲ +0.01</td><td>Sin faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">0.94</td><td style="color:var(--muted2)">0.93</td><td style="color:var(--red);font-weight:700;">▲ +0.01</td><td>Sin faltante</td></tr></tbody>
+      <tbody id="dvx-tbody"></tbody>
     </table>
   </div>
 </div>
@@ -913,7 +950,12 @@ function renderDVX(){
     if(prevSem){
       const prevData=src.filter(d=>d.semana===prevSem&&d[col]!==null&&d[col]!==undefined);
       const prevAvg=prevData.length?Math.round(prevData.reduce((s,d)=>s+d[col],0)/prevData.length*100)/100:null;
-      if(prevAvg!==null){diff=(avg-prevAvg).toFixed(2);dColor=parseFloat(diff)>0?'var(--red)':'var(--green)';dArrow=parseFloat(diff)>0?'▲':'▼';}
+      if(prevAvg!==null){
+        diff=(avg-prevAvg).toFixed(2);
+        const worse=dvxVista==='DVX'?parseFloat(diff)>0:parseFloat(diff)<0;
+        dColor=worse?'var(--red)':'var(--green)';
+        dArrow=parseFloat(diff)>0?'▲':'▼';
+      }
     }
     kpiEl.innerHTML+=`<div class="kcard" style="--mc:${M_COLORS_KPI[m]}"><div class="kc-label">${m} — SEMANA ${lastSem}</div><div class="kc-big">${avg}</div><div class="kc-sub">PROMEDIO ${prefix}</div>${diff!==null?`<div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:${dColor}">${dArrow} ${Math.abs(diff)} vs S${prevSem}</div>`:''}</div>`;
   });
@@ -922,12 +964,14 @@ function renderDVX(){
   function makeBarChart(canvasId, colCon, colSin, colorMain, colorLight){
     const valCon = src.map(d=>d[colCon]!==undefined&&d[colCon]!==null?d[colCon]:null);
     const valSin = src.map(d=>d[colSin]!==undefined&&d[colSin]!==null?d[colSin]:null);
-    // Mark days that worsened
+    // Mark days that worsened (DVX=higher is worse, DRR=lower is worse)
     const bgCon = valCon.map((v,i)=>{
       if(v===null)return colorMain;
       const prev=valCon.slice(0,i).filter(x=>x!==null);
-      if(prev.length && v>prev[prev.length-1]) return 'rgba(204,34,0,.9)';
-      return colorMain;
+      if(!prev.length)return colorMain;
+      const lastPrev=prev[prev.length-1];
+      const worsened = dvxVista==='DVX' ? v>lastPrev : v<lastPrev;
+      return worsened ? 'rgba(204,34,0,.9)' : colorMain;
     });
     const el=document.getElementById(canvasId);
     if(!el)return null;
@@ -963,8 +1007,10 @@ function renderDVX(){
                 const i=items[0].dataIndex;
                 const prev=valCon.slice(0,i).filter(x=>x!==null);
                 const v=valCon[i];
-                if(prev.length&&v!==null&&v>prev[prev.length-1]) return ['⚠ EMPEORÓ vs día anterior'];
-                return [];
+                if(!prev.length||v===null)return[];
+                const lp=prev[prev.length-1];
+                const worsened=dvxVista==='DVX'?v>lp:v<lp;
+                return worsened?['⚠ EMPEORÓ vs día anterior']:[];
               }
             }
           },
@@ -973,7 +1019,7 @@ function renderDVX(){
           x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{color:'#6b7a94',font:{size:9}},stacked:false},
           y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{color:'#6b7a94',font:{size:10}},beginAtZero:true}
         },
-        layout:{padding:{top:20}}
+        layout:{padding:{top:24,left:4,right:4}}
       }
     });
   }
@@ -1033,8 +1079,11 @@ function renderDVX(){
       const cur=src[i],prev=src[i-1];
       [[col,'Con faltante'],[colSin,'Sin faltante']].forEach(([c,lbl])=>{
         const v=cur[c],vp=prev[c];
-        if(v!==null&&v!==undefined&&vp!==null&&vp!==undefined&&v>vp){
-          empeoro.push({fecha:cur.fecha,modelo:m,valor:v,anterior:vp,diff:Math.round((v-vp)*100)/100,tipo:lbl});
+        if(v===null||v===undefined||vp===null||vp===undefined)return;
+        const worsened=dvxVista==='DVX'?v>vp:v<vp;
+        const diff=dvxVista==='DVX'?Math.round((v-vp)*100)/100:Math.round((vp-v)*100)/100;
+        if(worsened){
+          empeoro.push({fecha:cur.fecha,modelo:m,valor:v,anterior:vp,diff,tipo:lbl});
         }
       });
     }
