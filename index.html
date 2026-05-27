@@ -1,4 +1,3 @@
-
 <html lang="es"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -258,6 +257,14 @@ tr:hover td{background:var(--s2);}
       <button class="fbtn active" onclick="setDVXVista('DVX',this)">DVX</button>
       <button class="fbtn" onclick="setDVXVista('DRR',this)">DRR</button>
     </div>
+    <div class="sep"></div>
+    <span class="flabel">Período</span>
+    <div class="fgroup" id="dvx-fg-dias">
+      <button class="fbtn active" onclick="setDVXDias(5,this)">5D</button>
+      <button class="fbtn" onclick="setDVXDias(10,this)">10D</button>
+      <button class="fbtn" onclick="setDVXDias(30,this)">30D</button>
+      <button class="fbtn" onclick="setDVXDias(0,this)">TODOS</button>
+    </div>
   </div>
   <div class="kpi-row" id="dvx-kpi" style="margin-bottom:20px;"></div>
   <div class="chart-panel" style="margin-bottom:16px;">
@@ -418,6 +425,12 @@ function renderGChart(data){
 }
 
 // ── DVX/DRR ──
+function setDVXDias(v,btn){
+  dvxDias=v;
+  document.getElementById('dvx-fg-dias').querySelectorAll('.fbtn').forEach(b=>b.className='fbtn');
+  btn.className='fbtn active';
+  renderDVX();
+}
 function setDVXVista(v,btn){
   dvxVista=v;
   document.getElementById('dvx-fg-vista').querySelectorAll('.fbtn').forEach(b=>b.className='fbtn');
@@ -426,7 +439,8 @@ function setDVXVista(v,btn){
 }
 
 function renderDVX(){
-  const src=dvxVista==='DVX'?DVX:DRR;
+  const srcAll=dvxVista==='DVX'?DVX:DRR;
+  const src=dvxDias>0?srcAll.slice(-dvxDias):srcAll;
   const prefix=dvxVista;
   const labels=src.map(d=>d.fecha);
   const semanas=[...new Set(src.map(d=>d.semana))].sort((a,b)=>a-b);
