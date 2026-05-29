@@ -16,7 +16,7 @@
   --green:#1a8a4a;--red:#cc2200;--orange:#cc7700;--accent:#1d3a8a;
   --d2:#8892a4;--d30:#cc7700;--d50:#cc4400;--d60:#cc2200;
   --dvx-color:#6644aa;--drr-color:#1a7a4a;--kp1-color:#0e7490;
-  --sca-color:#7c3aed;--dpv-color:#be185d;--kppm-color:#b45309;
+  --sca-color:#7c3aed;--dpv-color:#be185d;--kppm-color:#b45309;--inout-color:#0f766e;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;font-weight:300;min-height:100vh;}
@@ -253,6 +253,36 @@ tr:hover td{background:var(--s2);}
       <div class="hc-desc">DPV · KPPM · Menor es mejor</div>
       <div class="hc-values" id="home-sca-vals"><div class="hc-val" style="text-align:center;"><div style="color:var(--red);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">0.5</div><div style="font-size:.48rem;color:var(--dpv-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">DPV CRONOS</div><div style="font-size:.5rem;font-weight:700;color:var(--red)">(+0.1)</div></div><div class="hc-val" style="text-align:center;"><div style="color:var(--green);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">1.5</div><div style="font-size:.48rem;color:var(--dpv-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">DPV DAKOTA</div><div style="font-size:.5rem;font-weight:700;color:var(--green)">(-0.3)</div></div><div class="hc-val" style="text-align:center;"><div style="color:var(--red);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">0.94</div><div style="font-size:.48rem;color:var(--dpv-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">DPV PLANTA</div><div style="font-size:.5rem;font-weight:700;color:var(--red)">(+0.05)</div></div><div class="hc-val" style="text-align:center;"><div style="color:var(--green);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">166.67</div><div style="font-size:.48rem;color:var(--kppm-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">KPPM CRONOS</div><div style="font-size:.5rem;font-weight:700;color:var(--green)">(-33.33)</div></div><div class="hc-val" style="text-align:center;"><div style="color:var(--green);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">200</div><div style="font-size:.48rem;color:var(--kppm-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">KPPM DAKOTA</div><div style="font-size:.5rem;font-weight:700;color:var(--green)">(-200)</div></div><div class="hc-val" style="text-align:center;"><div style="color:var(--green);font-size:1.2rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">26.28</div><div style="font-size:.48rem;color:var(--kppm-color);font-family:'Share Tech Mono',monospace;margin-top:2px;">KPPM PLANTA</div><div style="font-size:.5rem;font-weight:700;color:var(--green)">(-107.9)</div></div></div>
     </div>
+    <div class="home-card" style="--hc:var(--inout-color)" onclick="goTo('inout')">
+      <span class="hc-arrow">→</span><div class="hc-icon">🔄</div>
+      <div class="hc-name">IN / OUT</div>
+      <div class="hc-desc">BOX · PIAZZALE · OUT &gt; IN es mejor</div>
+      <div id="home-inout-vals" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="text-align:center;">
+      <div style="font-size:.52rem;color:var(--inout-color);font-family:'Share Tech Mono',monospace;letter-spacing:1px;">BOX</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:3px;">
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">OUT</div>
+          <div style="color:var(--green);font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">132</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">IN</div>
+          <div style="color:var(--muted);font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">128</div>
+        </div>
+      </div>
+    </div><div style="text-align:center;">
+      <div style="font-size:.52rem;color:var(--inout-color);font-family:'Share Tech Mono',monospace;letter-spacing:1px;">PIAZZALE</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:3px;">
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">OUT</div>
+          <div style="color:var(--green);font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">121</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">IN</div>
+          <div style="color:var(--muted);font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">117</div>
+        </div>
+      </div>
+    </div></div>
+    </div>
 
   </div>
 </div>
@@ -354,9 +384,9 @@ tr:hover td{background:var(--s2);}
       <button class="fbtn act-kp1" onclick="setIndModelo('dvx','KP1',this)">KP1</button>
     </div>
   </div>
-  <div class="kpi-row" id="dvx-kpi"><div class="kcard" style="--mc:var(--cronos)"><div class="kc-label">CRONOS — S22</div><div class="kc-big">1.16</div><div class="kc-sub">PROM. DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--red)">▲ 0.08 vs S21</div></div><div class="kcard" style="--mc:var(--dakota)"><div class="kc-label">DAKOTA — S22</div><div class="kc-big">4.33</div><div class="kc-sub">PROM. DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--green)">▼ 0.51 vs S21</div></div><div class="kcard" style="--mc:var(--titano)"><div class="kc-label">TITANO — S22</div><div class="kc-big">3.57</div><div class="kc-sub">PROM. DVX</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--green)">▼ 0.27 vs S21</div></div></div>
+  <div class="kpi-row" id="dvx-kpi"></div>
 
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--cronos)">DVX CRONOS</span>
       <div class="leg-row">
@@ -364,9 +394,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="dvx-c-cronos" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="dvx-c-cronos"></canvas></div>
   </div>
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--dakota)">DVX DAKOTA</span>
       <div class="leg-row">
@@ -374,9 +404,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="dvx-c-dakota" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="dvx-c-dakota"></canvas></div>
   </div>
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--titano)">DVX TITANO</span>
       <div class="leg-row">
@@ -384,9 +414,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="dvx-c-titano" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="dvx-c-titano"></canvas></div>
   </div>
-  <div class="chart-panel" id="dvx-kp1-inline" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" id="dvx-kp1-inline" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--kp1-color)">DVX KP1</span>
       <div class="leg-row">
@@ -394,17 +424,17 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="dvx-kp1-chart-inline" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="dvx-kp1-chart-inline"></canvas></div>
   </div>
   <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head"><span class="cp-title">PROMEDIO SEMANAL — DVX (desde hoja DVX SEMANAL)</span></div>
-    <div style="position:relative;height:320px;"><canvas id="dvx-sem" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="dvx-sem"></canvas></div>
   </div>
   <div class="tbl-panel">
     <div class="sec-head">
       <span class="sec-title">⚠ DÍAS QUE EMPEORÓ</span>
       <div style="display:flex;gap:8px;align-items:center;">
-        <span class="tally" id="dvx-tally">37 de 37 registros</span>
+        <span class="tally" id="dvx-tally"></span>
         <div class="fgroup" id="dvx-emp-fg">
           <button class="fbtn active" onclick="setEmpFilt('dvx','TODOS',this)">TODOS</button>
           <button class="fbtn" onclick="setEmpFilt('dvx','CRONOS',this)">CRONOS</button>
@@ -414,7 +444,7 @@ tr:hover td{background:var(--s2);}
       </div>
     </div>
     <table><thead><tr><th>FECHA</th><th>MODELO</th><th>VALOR</th><th>DÍA ANTERIOR</th><th>VARIACIÓN</th><th>TIPO</th></tr></thead>
-    <tbody id="dvx-tbody"><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.12</td><td style="color:var(--muted2)">4.09</td><td style="color:var(--red);font-weight:700;">▲ +4.03</td><td>Sin faltante</td></tr><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.12</td><td style="color:var(--muted2)">4.16</td><td style="color:var(--red);font-weight:700;">▲ +3.96</td><td>Con faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">6.25</td><td style="color:var(--muted2)">4.01</td><td style="color:var(--red);font-weight:700;">▲ +2.24</td><td>Sin faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">8.26</td><td style="color:var(--muted2)">6.11</td><td style="color:var(--red);font-weight:700;">▲ +2.15</td><td>Con faltante</td></tr><tr><td>26/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">5.18</td><td style="color:var(--muted2)">3.91</td><td style="color:var(--red);font-weight:700;">▲ +1.27</td><td>Con faltante</td></tr><tr><td>7/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">6.11</td><td style="color:var(--muted2)">4.85</td><td style="color:var(--red);font-weight:700;">▲ +1.26</td><td>Con faltante</td></tr><tr><td>26/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.13</td><td style="color:var(--muted2)">3.38</td><td style="color:var(--red);font-weight:700;">▲ +0.75</td><td>Sin faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.59</td><td style="color:var(--muted2)">3.85</td><td style="color:var(--red);font-weight:700;">▲ +0.74</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.18</td><td style="color:var(--muted2)">3.49</td><td style="color:var(--red);font-weight:700;">▲ +0.69</td><td>Con faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">4.48</td><td style="color:var(--muted2)">3.83</td><td style="color:var(--red);font-weight:700;">▲ +0.65</td><td>Sin faltante</td></tr><tr><td>15/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.37</td><td style="color:var(--muted2)">3.8</td><td style="color:var(--red);font-weight:700;">▲ +0.57</td><td>Sin faltante</td></tr><tr><td>26/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.18</td><td style="color:var(--muted2)">0.64</td><td style="color:var(--red);font-weight:700;">▲ +0.54</td><td>Con faltante</td></tr><tr><td>26/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.18</td><td style="color:var(--muted2)">0.64</td><td style="color:var(--red);font-weight:700;">▲ +0.54</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.52</td><td style="color:var(--muted2)">1.02</td><td style="color:var(--red);font-weight:700;">▲ +0.5</td><td>Con faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.4</td><td style="color:var(--muted2)">0.94</td><td style="color:var(--red);font-weight:700;">▲ +0.46</td><td>Sin faltante</td></tr><tr><td>28/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.88</td><td style="color:var(--muted2)">3.48</td><td style="color:var(--red);font-weight:700;">▲ +0.4</td><td>Sin faltante</td></tr><tr><td>28/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.88</td><td style="color:var(--muted2)">3.53</td><td style="color:var(--red);font-weight:700;">▲ +0.35</td><td>Con faltante</td></tr><tr><td>12/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">5.61</td><td style="color:var(--muted2)">5.38</td><td style="color:var(--red);font-weight:700;">▲ +0.23</td><td>Con faltante</td></tr><tr><td>27/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.53</td><td style="color:var(--muted2)">3.3</td><td style="color:var(--red);font-weight:700;">▲ +0.23</td><td>Con faltante</td></tr><tr><td>27/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.48</td><td style="color:var(--muted2)">3.26</td><td style="color:var(--red);font-weight:700;">▲ +0.22</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.85</td><td style="color:var(--muted2)">3.67</td><td style="color:var(--red);font-weight:700;">▲ +0.18</td><td>Sin faltante</td></tr><tr><td>28/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.23</td><td style="color:var(--muted2)">1.08</td><td style="color:var(--red);font-weight:700;">▲ +0.15</td><td>Con faltante</td></tr><tr><td>28/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.23</td><td style="color:var(--muted2)">1.08</td><td style="color:var(--red);font-weight:700;">▲ +0.15</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">3.85</td><td style="color:var(--muted2)">3.7</td><td style="color:var(--red);font-weight:700;">▲ +0.15</td><td>Con faltante</td></tr><tr><td>15/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">5.36</td><td style="color:var(--muted2)">5.24</td><td style="color:var(--red);font-weight:700;">▲ +0.12</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.04</td><td style="color:var(--red);font-weight:700;">▲ +0.1</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.16</td><td style="color:var(--muted2)">4.06</td><td style="color:var(--red);font-weight:700;">▲ +0.1</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.12</td><td style="color:var(--muted2)">1.03</td><td style="color:var(--red);font-weight:700;">▲ +0.09</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.12</td><td style="color:var(--muted2)">1.03</td><td style="color:var(--red);font-weight:700;">▲ +0.09</td><td>Sin faltante</td></tr><tr><td>11/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.08</td><td style="color:var(--muted2)">1</td><td style="color:var(--red);font-weight:700;">▲ +0.08</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">4.09</td><td style="color:var(--muted2)">4.01</td><td style="color:var(--red);font-weight:700;">▲ +0.08</td><td>Sin faltante</td></tr><tr><td>11/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.09</td><td style="color:var(--muted2)">1.02</td><td style="color:var(--red);font-weight:700;">▲ +0.07</td><td>Con faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.02</td><td style="color:var(--muted2)">0.97</td><td style="color:var(--red);font-weight:700;">▲ +0.05</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.1</td><td style="color:var(--red);font-weight:700;">▲ +0.04</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.14</td><td style="color:var(--muted2)">1.12</td><td style="color:var(--red);font-weight:700;">▲ +0.02</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">1.13</td><td style="color:var(--muted2)">1.12</td><td style="color:var(--red);font-weight:700;">▲ +0.01</td><td>Sin faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">0.94</td><td style="color:var(--muted2)">0.93</td><td style="color:var(--red);font-weight:700;">▲ +0.01</td><td>Sin faltante</td></tr></tbody></table>
+    <tbody id="dvx-tbody"></tbody></table>
   </div>
 </div>
 
@@ -442,9 +472,9 @@ tr:hover td{background:var(--s2);}
       <button class="fbtn act-kp1" onclick="setIndModelo('drr','KP1',this)">KP1</button>
     </div>
   </div>
-  <div class="kpi-row" id="drr-kpi"><div class="kcard" style="--mc:var(--cronos)"><div class="kc-label">CRONOS — S22</div><div class="kc-big">73.6</div><div class="kc-sub">PROM. DRR</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--red)">▼ 0.53 vs S21</div></div><div class="kcard" style="--mc:var(--dakota)"><div class="kc-label">DAKOTA — S22</div><div class="kc-big">15</div><div class="kc-sub">PROM. DRR</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--red)">▼ 14.76 vs S21</div></div><div class="kcard" style="--mc:var(--titano)"><div class="kc-label">TITANO — S22</div><div class="kc-big">45.72</div><div class="kc-sub">PROM. DRR</div><div style="margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:var(--green)">▲ 11.32 vs S21</div></div></div>
+  <div class="kpi-row" id="drr-kpi"></div>
 
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--cronos)">DRR CRONOS</span>
       <div class="leg-row">
@@ -452,9 +482,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="drr-c-cronos" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="drr-c-cronos"></canvas></div>
   </div>
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--dakota)">DRR DAKOTA</span>
       <div class="leg-row">
@@ -462,9 +492,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="drr-c-dakota" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="drr-c-dakota"></canvas></div>
   </div>
-  <div class="chart-panel" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--titano)">DRR TITANO</span>
       <div class="leg-row">
@@ -472,9 +502,9 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="drr-c-titano" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="drr-c-titano"></canvas></div>
   </div>
-  <div class="chart-panel" id="drr-kp1-inline" style="margin-bottom: 16px; display: block;">
+  <div class="chart-panel" id="drr-kp1-inline" style="margin-bottom:16px;">
     <div class="cp-head">
       <span class="cp-title" style="color:var(--kp1-color)">DRR KP1</span>
       <div class="leg-row">
@@ -482,17 +512,17 @@ tr:hover td{background:var(--s2);}
         <div class="leg"><div class="leg-dot" style="background:rgba(0,102,204,.75)"></div>SIN FALTANTE</div>
       </div>
     </div>
-    <div style="position:relative;height:320px;"><canvas id="drr-kp1-chart-inline" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="drr-kp1-chart-inline"></canvas></div>
   </div>
   <div class="chart-panel" style="margin-bottom:16px;">
     <div class="cp-head"><span class="cp-title">PROMEDIO SEMANAL — DRR (desde hoja DRR SEMANAL)</span></div>
-    <div style="position:relative;height:320px;"><canvas id="drr-sem" width="1326" height="320" style="display: block; box-sizing: border-box; height: 320px; width: 1326px;"></canvas></div>
+    <div style="position:relative;height:320px;"><canvas id="drr-sem"></canvas></div>
   </div>
   <div class="tbl-panel">
     <div class="sec-head">
       <span class="sec-title">⚠ DÍAS QUE EMPEORÓ</span>
       <div style="display:flex;gap:8px;align-items:center;">
-        <span class="tally" id="drr-tally">32 de 32 registros</span>
+        <span class="tally" id="drr-tally"></span>
         <div class="fgroup" id="drr-emp-fg">
           <button class="fbtn active" onclick="setEmpFilt('drr','TODOS',this)">TODOS</button>
           <button class="fbtn" onclick="setEmpFilt('drr','CRONOS',this)">CRONOS</button>
@@ -502,7 +532,7 @@ tr:hover td{background:var(--s2);}
       </div>
     </div>
     <table><thead><tr><th>FECHA</th><th>MODELO</th><th>VALOR</th><th>DÍA ANTERIOR</th><th>VARIACIÓN</th><th>TIPO</th></tr></thead>
-    <tbody id="drr-tbody"><tr><td>22/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">3.03</td><td style="color:var(--muted2)">63.89</td><td style="color:var(--red);font-weight:700;">▲ +60.86</td><td>Con faltante</td></tr><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">0</td><td style="color:var(--muted2)">44.83</td><td style="color:var(--red);font-weight:700;">▲ +44.83</td><td>Sin faltante</td></tr><tr><td>20/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">0</td><td style="color:var(--muted2)">42.24</td><td style="color:var(--red);font-weight:700;">▲ +42.24</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">21.05</td><td style="color:var(--muted2)">47.75</td><td style="color:var(--red);font-weight:700;">▲ +26.7</td><td>Con faltante</td></tr><tr><td>7/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">18.75</td><td style="color:var(--muted2)">44.64</td><td style="color:var(--red);font-weight:700;">▲ +25.89</td><td>Con faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">18.75</td><td style="color:var(--muted2)">44.64</td><td style="color:var(--red);font-weight:700;">▲ +25.89</td><td>Sin faltante</td></tr><tr><td>22/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">42.24</td><td style="color:var(--muted2)">63.89</td><td style="color:var(--red);font-weight:700;">▲ +21.65</td><td>Sin faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">16.22</td><td style="color:var(--muted2)">35.42</td><td style="color:var(--red);font-weight:700;">▲ +19.2</td><td>Con faltante</td></tr><tr><td>15/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">35.09</td><td style="color:var(--muted2)">52.05</td><td style="color:var(--red);font-weight:700;">▲ +16.96</td><td>Sin faltante</td></tr><tr><td>12/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">18.92</td><td style="color:var(--muted2)">35.42</td><td style="color:var(--red);font-weight:700;">▲ +16.5</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">26.83</td><td style="color:var(--muted2)">42.98</td><td style="color:var(--red);font-weight:700;">▲ +16.15</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">0</td><td style="color:var(--muted2)">15.58</td><td style="color:var(--red);font-weight:700;">▲ +15.58</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">26.83</td><td style="color:var(--muted2)">42.11</td><td style="color:var(--red);font-weight:700;">▲ +15.28</td><td>Con faltante</td></tr><tr><td>21/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">34.21</td><td style="color:var(--muted2)">47.75</td><td style="color:var(--red);font-weight:700;">▲ +13.54</td><td>Sin faltante</td></tr><tr><td>11/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">35.42</td><td style="color:var(--muted2)">48.94</td><td style="color:var(--red);font-weight:700;">▲ +13.52</td><td>Con faltante</td></tr><tr><td>11/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">35.42</td><td style="color:var(--muted2)">48.94</td><td style="color:var(--red);font-weight:700;">▲ +13.52</td><td>Sin faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">67.86</td><td style="color:var(--muted2)">78.57</td><td style="color:var(--red);font-weight:700;">▲ +10.71</td><td>Con faltante</td></tr><tr><td>14/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">67.86</td><td style="color:var(--muted2)">78.57</td><td style="color:var(--red);font-weight:700;">▲ +10.71</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">63.95</td><td style="color:var(--muted2)">73.71</td><td style="color:var(--red);font-weight:700;">▲ +9.76</td><td>Con faltante</td></tr><tr><td>26/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">32.5</td><td style="color:var(--muted2)">42.24</td><td style="color:var(--red);font-weight:700;">▲ +9.74</td><td>Sin faltante</td></tr><tr><td>26/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">70.05</td><td style="color:var(--muted2)">78.57</td><td style="color:var(--red);font-weight:700;">▲ +8.52</td><td>Con faltante</td></tr><tr><td>26/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">70.05</td><td style="color:var(--muted2)">78.57</td><td style="color:var(--red);font-weight:700;">▲ +8.52</td><td>Sin faltante</td></tr><tr><td>8/5</td><td class="tag-dakota">DAKOTA</td><td style="font-weight:700;color:var(--red)">12.5</td><td style="color:var(--muted2)">18.75</td><td style="color:var(--red);font-weight:700;">▲ +6.25</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">78.57</td><td style="color:var(--muted2)">84.74</td><td style="color:var(--red);font-weight:700;">▲ +6.17</td><td>Con faltante</td></tr><tr><td>13/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">78.57</td><td style="color:var(--muted2)">84.74</td><td style="color:var(--red);font-weight:700;">▲ +6.17</td><td>Sin faltante</td></tr><tr><td>27/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">42.72</td><td style="color:var(--muted2)">48.72</td><td style="color:var(--red);font-weight:700;">▲ +6</td><td>Con faltante</td></tr><tr><td>27/5</td><td class="tag-titano">TITANO</td><td style="font-weight:700;color:var(--red)">42.72</td><td style="color:var(--muted2)">48.72</td><td style="color:var(--red);font-weight:700;">▲ +6</td><td>Sin faltante</td></tr><tr><td>19/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">70.75</td><td style="color:var(--muted2)">75.77</td><td style="color:var(--red);font-weight:700;">▲ +5.02</td><td>Sin faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">73.71</td><td style="color:var(--muted2)">77.55</td><td style="color:var(--red);font-weight:700;">▲ +3.84</td><td>Con faltante</td></tr><tr><td>18/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">75.77</td><td style="color:var(--muted2)">78.06</td><td style="color:var(--red);font-weight:700;">▲ +2.29</td><td>Sin faltante</td></tr><tr><td>22/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">78.57</td><td style="color:var(--muted2)">78.91</td><td style="color:var(--red);font-weight:700;">▲ +0.34</td><td>Con faltante</td></tr><tr><td>22/5</td><td class="tag-cronos">CRONOS</td><td style="font-weight:700;color:var(--red)">78.57</td><td style="color:var(--muted2)">78.91</td><td style="color:var(--red);font-weight:700;">▲ +0.34</td><td>Sin faltante</td></tr></tbody></table>
+    <tbody id="drr-tbody"></tbody></table>
   </div>
 </div>
 
@@ -511,7 +541,7 @@ tr:hover td{background:var(--s2);}
 <div class="page" id="page-sca">
   <button class="back-btn" onclick="goHome()">← INDICADORES</button>
   <div class="page-title-row">
-    <div class="page-title" style="color:var(--sca-color)">🔍 SCA </div>
+    <div class="page-title" style="color:var(--sca-color)">🔍 SCA — Satisfacción Cliente Ampliada</div>
     <span class="badge" id="sca-date-badge">28/05/2026</span>
   </div>
   <!-- DPV section -->
@@ -621,6 +651,55 @@ tr:hover td{background:var(--s2);}
     <tbody id="sca-tbody"></tbody></table>
   </div>
 </div>
+
+<!-- IN_OUT -->
+<div class="page" id="page-inout">
+  <button class="back-btn" onclick="goHome()">← INDICADORES</button>
+  <div class="page-title-row">
+    <div class="page-title" style="color:var(--inout-color)">🔄 IN / OUT</div>
+    <span class="badge" id="inout-date-badge">28/05/2026</span>
+  </div>
+  <div class="filtros" style="margin-bottom:20px;">
+    <span class="flabel">Período</span>
+    <div class="fgroup" id="inout-fg-dias">
+      <button class="fbtn active" onclick="setInOutDias(10,this)">10D</button>
+      <button class="fbtn" onclick="setInOutDias(20,this)">20D</button>
+      <button class="fbtn" onclick="setInOutDias(0,this)">TODOS</button>
+    </div>
+  </div>
+  <div class="kpi-row" id="inout-kpi" style="grid-template-columns:repeat(2,1fr);max-width:600px;margin-bottom:20px;"></div>
+  <div class="chart-panel" style="margin-bottom:16px;">
+    <div class="cp-head">
+      <span class="cp-title" style="color:var(--inout-color)">BOX — IN vs OUT</span>
+      <div class="leg-row">
+        <div class="leg"><div class="leg-dot" style="background:#cc2200"></div>OUT</div>
+        <div class="leg"><div class="leg-dot" style="background:#0066cc"></div>IN</div>
+      </div>
+    </div>
+    <div style="position:relative;height:340px;"><canvas id="inout-box-chart"></canvas></div>
+  </div>
+  <div class="chart-panel" style="margin-bottom:16px;">
+    <div class="cp-head">
+      <span class="cp-title" style="color:var(--inout-color)">PIAZZALE — IN vs OUT</span>
+      <div class="leg-row">
+        <div class="leg"><div class="leg-dot" style="background:#cc2200"></div>OUT</div>
+        <div class="leg"><div class="leg-dot" style="background:#0066cc"></div>IN</div>
+      </div>
+    </div>
+    <div style="position:relative;height:340px;"><canvas id="inout-piaz-chart"></canvas></div>
+  </div>
+  <div class="tbl-panel">
+    <div class="sec-head">
+      <span class="sec-title">DETALLE DIARIO</span>
+      <span class="tally" id="inout-tally"></span>
+    </div>
+    <table><thead><tr>
+      <th>FECHA</th>
+      <th>BOX IN</th><th>BOX OUT</th><th>BOX RESULT</th>
+      <th>PIAZZALE IN</th><th>PIAZZALE OUT</th><th>PIAZZALE RESULT</th>
+    </tr></thead><tbody id="inout-tbody"></tbody></table>
+  </div>
+</div>
 </div><!-- /wrap -->
 <script>
 Chart.register(ChartDataLabels);
@@ -631,6 +710,7 @@ let DVX  = [{"fecha":"6/5","semana":19,"DVX CRONOS":1.72,"DVX CRONOS SIN FALTANT
 let DRR  = [{"fecha":"6/5","semana":19,"DRR CRONOS":53.31,"DRR CRONOS SIN FALTANTE":52.31,"DRR DAKOTA":44.64,"DRR DAKOTA SIN FALTANTE":null,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":31.82,"DRR KP1 SIN FALTANTE":null},{"fecha":"7/5","semana":19,"DRR CRONOS":71.66,"DRR CRONOS SIN FALTANTE":72.73,"DRR DAKOTA":18.75,"DRR DAKOTA SIN FALTANTE":44.64,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":6.25,"DRR KP1 SIN FALTANTE":null},{"fecha":"8/5","semana":19,"DRR CRONOS":73.37,"DRR CRONOS SIN FALTANTE":74.37,"DRR DAKOTA":12.5,"DRR DAKOTA SIN FALTANTE":18.75,"DRR TITANO":48.94,"DRR TITANO SIN FALTANTE":48.94,"DRR KP1":43.64,"DRR KP1 SIN FALTANTE":44.55},{"fecha":"11/5","semana":20,"DRR CRONOS":81.63,"DRR CRONOS SIN FALTANTE":82.14,"DRR DAKOTA":55.56,"DRR DAKOTA SIN FALTANTE":55.56,"DRR TITANO":35.42,"DRR TITANO SIN FALTANTE":35.42,"DRR KP1":38.6,"DRR KP1 SIN FALTANTE":38.6},{"fecha":"12/5","semana":20,"DRR CRONOS":84.74,"DRR CRONOS SIN FALTANTE":84.74,"DRR DAKOTA":null,"DRR DAKOTA SIN FALTANTE":null,"DRR TITANO":16.22,"DRR TITANO SIN FALTANTE":18.92,"DRR KP1":15.79,"DRR KP1 SIN FALTANTE":26.32},{"fecha":"13/5","semana":20,"DRR CRONOS":78.57,"DRR CRONOS SIN FALTANTE":78.57,"DRR DAKOTA":15.58,"DRR DAKOTA SIN FALTANTE":29.87,"DRR TITANO":42.11,"DRR TITANO SIN FALTANTE":42.98,"DRR KP1":42.11,"DRR KP1 SIN FALTANTE":42.98},{"fecha":"14/5","semana":20,"DRR CRONOS":67.86,"DRR CRONOS SIN FALTANTE":67.86,"DRR DAKOTA":0,"DRR DAKOTA SIN FALTANTE":52.05,"DRR TITANO":26.83,"DRR TITANO SIN FALTANTE":26.83,"DRR KP1":9.65,"DRR KP1 SIN FALTANTE":42.98},{"fecha":"15/5","semana":20,"DRR CRONOS":77.55,"DRR CRONOS SIN FALTANTE":78.06,"DRR DAKOTA":6.14,"DRR DAKOTA SIN FALTANTE":35.09,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":6.14,"DRR KP1 SIN FALTANTE":35.09},{"fecha":"18/5","semana":21,"DRR CRONOS":73.71,"DRR CRONOS SIN FALTANTE":75.77,"DRR DAKOTA":39.66,"DRR DAKOTA SIN FALTANTE":40.52,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":39.66,"DRR KP1 SIN FALTANTE":40.52},{"fecha":"19/5","semana":21,"DRR CRONOS":63.95,"DRR CRONOS SIN FALTANTE":70.75,"DRR DAKOTA":42.24,"DRR DAKOTA SIN FALTANTE":44.83,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":42.24,"DRR KP1 SIN FALTANTE":44.83},{"fecha":"20/5","semana":21,"DRR CRONOS":75.51,"DRR CRONOS SIN FALTANTE":78.91,"DRR DAKOTA":0,"DRR DAKOTA SIN FALTANTE":0,"DRR TITANO":47.75,"DRR TITANO SIN FALTANTE":47.75,"DRR KP1":45.69,"DRR KP1 SIN FALTANTE":45.69},{"fecha":"21/5","semana":21,"DRR CRONOS":78.91,"DRR CRONOS SIN FALTANTE":78.91,"DRR DAKOTA":63.89,"DRR DAKOTA SIN FALTANTE":63.89,"DRR TITANO":21.05,"DRR TITANO SIN FALTANTE":34.21,"DRR KP1":34.82,"DRR KP1 SIN FALTANTE":43.75},{"fecha":"22/5","semana":21,"DRR CRONOS":78.57,"DRR CRONOS SIN FALTANTE":78.57,"DRR DAKOTA":3.03,"DRR DAKOTA SIN FALTANTE":42.24,"DRR TITANO":null,"DRR TITANO SIN FALTANTE":null,"DRR KP1":31.03,"DRR KP1 SIN FALTANTE":42.24},{"fecha":"26/5","semana":22,"DRR CRONOS":70.05,"DRR CRONOS SIN FALTANTE":70.05,"DRR DAKOTA":15,"DRR DAKOTA SIN FALTANTE":32.5,"DRR TITANO":48.72,"DRR TITANO SIN FALTANTE":48.72,"DRR KP1":37.29,"DRR KP1 SIN FALTANTE":43.22},{"fecha":"27/5","semana":22,"DRR CRONOS":77.16,"DRR CRONOS SIN FALTANTE":77.16,"DRR DAKOTA":null,"DRR DAKOTA SIN FALTANTE":null,"DRR TITANO":42.72,"DRR TITANO SIN FALTANTE":42.72,"DRR KP1":42.72,"DRR KP1 SIN FALTANTE":42.72},{"fecha":"28/5","semana":22,"DRR CRONOS":75.78,"DRR CRONOS SIN FALTANTE":75.78,"DRR DAKOTA":37.14,"DRR DAKOTA SIN FALTANTE":42.86,"DRR TITANO":36.36,"DRR TITANO SIN FALTANTE":36.36,"DRR KP1":37.07,"DRR KP1 SIN FALTANTE":42.24}];
 let DVX_SEM = [{"semana":"W 19","DVX  KP1":5.3,"DVX KP1 SIN FALTANTES":4.3,"DVX CRONOS":1.25,"DVX CRONOS SIN FALTANTES":1.18},{"semana":"W 20","DVX  KP1":4.8,"DVX KP1 SIN FALTANTES":4.21,"DVX CRONOS":1.08,"DVX CRONOS SIN FALTANTES":1.07},{"semana":"W 21","DVX  KP1":4.16,"DVX KP1 SIN FALTANTES":3.93,"DVX CRONOS":1.07,"DVX CRONOS SIN FALTANTES":1.02},{"semana":"W 22","DVX  KP1":3.88,"DVX KP1 SIN FALTANTES":3.67,"DVX CRONOS":1.16,"DVX CRONOS SIN FALTANTES":1.16}];
 let DPV   = [{"fecha":"6/5","semana":19,"DPV CRONOS":0.5,"DPV DAKOTA":1.87,"DPV TITANO":null,"DPV KP1":1.87,"DPV PLANTA":0.92},{"fecha":"7/5","semana":19,"DPV CRONOS":0.4,"DPV DAKOTA":2.12,"DPV TITANO":null,"DPV KP1":2.12,"DPV PLANTA":0.96},{"fecha":"8/5","semana":19,"DPV CRONOS":0.5,"DPV DAKOTA":2.12,"DPV TITANO":null,"DPV KP1":2.12,"DPV PLANTA":0.99},{"fecha":"11/5","semana":20,"DPV CRONOS":0.5,"DPV DAKOTA":2.25,"DPV TITANO":null,"DPV KP1":2.25,"DPV PLANTA":0.74},{"fecha":"12/5","semana":20,"DPV CRONOS":0.5,"DPV DAKOTA":null,"DPV TITANO":2.25,"DPV KP1":2.25,"DPV PLANTA":0.99},{"fecha":"13/5","semana":20,"DPV CRONOS":0.4,"DPV DAKOTA":null,"DPV TITANO":1.62,"DPV KP1":1.62,"DPV PLANTA":0.73},{"fecha":"14/5","semana":20,"DPV CRONOS":0.6,"DPV DAKOTA":null,"DPV TITANO":1.87,"DPV KP1":1.87,"DPV PLANTA":0.99},{"fecha":"15/5","semana":20,"DPV CRONOS":0.5,"DPV DAKOTA":null,"DPV TITANO":1.62,"DPV KP1":1.62,"DPV PLANTA":0.65},{"fecha":"18/5","semana":21,"DPV CRONOS":0.5,"DPV DAKOTA":1.75,"DPV TITANO":1.5,"DPV KP1":1.73,"DPV PLANTA":0.98},{"fecha":"19/5","semana":21,"DPV CRONOS":0.4,"DPV DAKOTA":2,"DPV TITANO":null,"DPV KP1":2,"DPV PLANTA":1.03},{"fecha":"20/5","semana":21,"DPV CRONOS":0.5,"DPV DAKOTA":1.62,"DPV TITANO":null,"DPV KP1":1.62,"DPV PLANTA":0.93},{"fecha":"21/5","semana":21,"DPV CRONOS":0.5,"DPV DAKOTA":2,"DPV TITANO":1.6,"DPV KP1":1.7,"DPV PLANTA":1.03},{"fecha":"22/5","semana":21,"DPV CRONOS":0.5,"DPV DAKOTA":null,"DPV TITANO":2,"DPV KP1":2,"DPV PLANTA":0.88},{"fecha":"26/5","semana":22,"DPV CRONOS":0.5,"DPV DAKOTA":1.6,"DPV TITANO":1.6,"DPV KP1":1.6,"DPV PLANTA":0.9},{"fecha":"27/5","semana":22,"DPV CRONOS":0.4,"DPV DAKOTA":1.8,"DPV TITANO":1.6,"DPV KP1":1.71,"DPV PLANTA":0.89},{"fecha":"28/5","semana":22,"DPV CRONOS":0.5,"DPV DAKOTA":1.5,"DPV TITANO":1.5,"DPV KP1":1.5,"DPV PLANTA":0.94}];
+let IN_OUT = [{"fecha":"24/4","semana":17,"BOX IN":130,"BOX OUT":129,"PIAZZALE IN":119,"PIAZZALE OUT":115},{"fecha":"25/4","semana":17,"BOX IN":119,"BOX OUT":120,"PIAZZALE IN":123,"PIAZZALE OUT":124},{"fecha":"27/4","semana":17,"BOX IN":40,"BOX OUT":29,"PIAZZALE IN":53,"PIAZZALE OUT":39},{"fecha":"28/4","semana":17,"BOX IN":135,"BOX OUT":137,"PIAZZALE IN":129,"PIAZZALE OUT":132},{"fecha":"29/4","semana":18,"BOX IN":130,"BOX OUT":132,"PIAZZALE IN":125,"PIAZZALE OUT":128},{"fecha":"30/4","semana":18,"BOX IN":129,"BOX OUT":126,"PIAZZALE IN":130,"PIAZZALE OUT":128},{"fecha":"4/5","semana":18,"BOX IN":134,"BOX OUT":131,"PIAZZALE IN":128,"PIAZZALE OUT":125},{"fecha":"5/5","semana":18,"BOX IN":129,"BOX OUT":131,"PIAZZALE IN":135,"PIAZZALE OUT":137},{"fecha":"6/5","semana":19,"BOX IN":127,"BOX OUT":129,"PIAZZALE IN":132,"PIAZZALE OUT":129},{"fecha":"7/5","semana":19,"BOX IN":119,"BOX OUT":121,"PIAZZALE IN":123,"PIAZZALE OUT":125},{"fecha":"8/5","semana":19,"BOX IN":132,"BOX OUT":135,"PIAZZALE IN":129,"PIAZZALE OUT":132},{"fecha":"9/5","semana":19,"BOX IN":128,"BOX OUT":123,"PIAZZALE IN":131,"PIAZZALE OUT":130},{"fecha":"12/5","semana":19,"BOX IN":128,"BOX OUT":131,"PIAZZALE IN":129,"PIAZZALE OUT":130},{"fecha":"13/5","semana":20,"BOX IN":132,"BOX OUT":130,"PIAZZALE IN":119,"PIAZZALE OUT":121},{"fecha":"14/5","semana":20,"BOX IN":116,"BOX OUT":112,"PIAZZALE IN":123,"PIAZZALE OUT":119},{"fecha":"15/5","semana":20,"BOX IN":136,"BOX OUT":131,"PIAZZALE IN":128,"PIAZZALE OUT":117},{"fecha":"16/5","semana":20,"BOX IN":121,"BOX OUT":118,"PIAZZALE IN":132,"PIAZZALE OUT":130},{"fecha":"18/5","semana":20,"BOX IN":0,"BOX OUT":25,"PIAZZALE IN":0,"PIAZZALE OUT":28},{"fecha":"19/5","semana":20,"BOX IN":129,"BOX OUT":103,"PIAZZALE IN":132,"PIAZZALE OUT":105},{"fecha":"20/5","semana":21,"BOX IN":149,"BOX OUT":135,"PIAZZALE IN":158,"PIAZZALE OUT":126},{"fecha":"21/5","semana":21,"BOX IN":137,"BOX OUT":139,"PIAZZALE IN":129,"PIAZZALE OUT":132},{"fecha":"22/5","semana":21,"BOX IN":131,"BOX OUT":134,"PIAZZALE IN":135,"PIAZZALE OUT":140},{"fecha":"26/5","semana":21,"BOX IN":129,"BOX OUT":130,"PIAZZALE IN":135,"PIAZZALE OUT":136},{"fecha":"27/5","semana":22,"BOX IN":135,"BOX OUT":138,"PIAZZALE IN":128,"PIAZZALE OUT":131},{"fecha":"28/5","semana":22,"BOX IN":120,"BOX OUT":122,"PIAZZALE IN":127,"PIAZZALE OUT":131},{"fecha":"29/5","semana":22,"BOX IN":128,"BOX OUT":132,"PIAZZALE IN":117,"PIAZZALE OUT":121}];
 let KPPM  = [{"fecha":"6/5","semana":19,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null},{"fecha":"7/5","semana":19,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null},{"fecha":"8/5","semana":19,"KPPM CRONOS":null,"KPPM DAKOTA":250,"KPPM TITANO":null,"KPPM KP1":250,"KPPM PLANTA":76.44},{"fecha":"11/5","semana":20,"KPPM CRONOS":null,"KPPM DAKOTA":125,"KPPM TITANO":null,"KPPM KP1":125,"KPPM PLANTA":17.57},{"fecha":"12/5","semana":20,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":375,"KPPM KP1":375,"KPPM PLANTA":106.5},{"fecha":"13/5","semana":20,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null},{"fecha":"14/5","semana":20,"KPPM CRONOS":200,"KPPM DAKOTA":null,"KPPM TITANO":125,"KPPM KP1":125,"KPPM PLANTA":176.83},{"fecha":"15/5","semana":20,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":125,"KPPM KP1":125,"KPPM PLANTA":17.43},{"fecha":"18/5","semana":21,"KPPM CRONOS":166.67,"KPPM DAKOTA":250,"KPPM TITANO":250,"KPPM KP1":250,"KPPM PLANTA":199.7},{"fecha":"19/5","semana":21,"KPPM CRONOS":null,"KPPM DAKOTA":250,"KPPM TITANO":null,"KPPM KP1":250,"KPPM PLANTA":98.57},{"fecha":"20/5","semana":21,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null},{"fecha":"21/5","semana":21,"KPPM CRONOS":null,"KPPM DAKOTA":333.33,"KPPM TITANO":null,"KPPM KP1":85.4,"KPPM PLANTA":37.71},{"fecha":"22/5","semana":21,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null},{"fecha":"26/5","semana":22,"KPPM CRONOS":null,"KPPM DAKOTA":400,"KPPM TITANO":null,"KPPM KP1":368.42,"KPPM PLANTA":134.18},{"fecha":"27/5","semana":22,"KPPM CRONOS":null,"KPPM DAKOTA":200,"KPPM TITANO":null,"KPPM KP1":70.08,"KPPM PLANTA":26.28},{"fecha":"28/5","semana":22,"KPPM CRONOS":null,"KPPM DAKOTA":null,"KPPM TITANO":null,"KPPM KP1":null,"KPPM PLANTA":null}];
 let DRR_SEM = [{"semana":"W 17","DRR  KP1":44.24,"DRR KP1 SIN FALTANTES":44.61,"DRR CRONOS":73.1,"DRR CRONOS SIN FALTANTES":73.72},{"semana":"W 18","DRR  KP1":18.18,"DRR KP1 SIN FALTANTES":38.06,"DRR CRONOS":65.9,"DRR CRONOS SIN FALTANTES":70.37},{"semana":"W 19","DRR  KP1":23.2,"DRR KP1 SIN FALTANTES":43.71,"DRR CRONOS":70.8,"DRR CRONOS SIN FALTANTES":74.69},{"semana":"W 20","DRR  KP1":22.46,"DRR KP1 SIN FALTANTES":37.19,"DRR CRONOS":78.03,"DRR CRONOS SIN FALTANTES":78.23},{"semana":"W 21","DRR  KP1":38.72,"DRR KP1 SIN FALTANTES":43.4,"DRR CRONOS":74.37,"DRR CRONOS SIN FALTANTES":76.65},{"semana":"W 22","DRR  KP1":38.87,"DRR KP1 SIN FALTANTES":42.73,"DRR CRONOS":74.14,"DRR CRONOS SIN FALTANTES":74.14}];
 
@@ -673,6 +753,7 @@ function db(d){if(d>60)return'<span class="badge-d d60">+60D</span>';if(d>50)ret
 // ── HOME ──
 function renderHome(){
   renderScaHomeCard();
+  renderInOutHomeCard();
   const mC2=m=>m==='CRONOS'?'var(--cronos)':m==='DAKOTA'?'var(--dakota)':'var(--titano)';
   // Giro
   const gm=document.getElementById('home-giro-models');gm.innerHTML='';
@@ -1061,6 +1142,129 @@ function renderScaHomeCard(){
   });
 }
 
+
+// ── IN_OUT ──
+let inOutDias = 10;
+
+function setInOutDias(v,btn){
+  inOutDias=v;
+  document.getElementById('inout-fg-dias').querySelectorAll('.fbtn').forEach(b=>b.className='fbtn');
+  btn.className='fbtn active';
+  renderInOut();
+}
+
+function renderInOut(){
+  const src=inOutDias>0?IN_OUT.slice(-inOutDias):IN_OUT;
+  const labels=src.map(d=>d.fecha);
+
+  // KPI cards
+  const kpiEl=document.getElementById('inout-kpi');kpiEl.innerHTML='';
+  [['BOX','BOX IN','BOX OUT'],['PIAZZALE','PIAZZALE IN','PIAZZALE OUT']].forEach(([name,cIn,cOut])=>{
+    const lastIn=src.length?src[src.length-1][cIn]:null;
+    const lastOut=src.length?src[src.length-1][cOut]:null;
+    const ok=lastOut!==null&&lastIn!==null&&lastOut>lastIn;
+    const equal=lastOut!==null&&lastIn!==null&&lastOut===lastIn;
+    const color=equal?'var(--orange)':ok?'var(--green)':'var(--red)';
+    const avgIn=src.filter(d=>d[cIn]!==null).reduce((s,d)=>s+d[cIn],0)/src.filter(d=>d[cIn]!==null).length||0;
+    const avgOut=src.filter(d=>d[cOut]!==null).reduce((s,d)=>s+d[cOut],0)/src.filter(d=>d[cOut]!==null).length||0;
+    kpiEl.innerHTML+=`<div class="kcard" style="--mc:${color}">
+      <div class="kc-label">${name}</div>
+      <div style="display:flex;gap:12px;align-items:baseline;margin-top:4px;">
+        <div><div style="font-size:.5rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">OUT</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:2.2rem;color:${color};line-height:1;">${lastOut??'-'}</div></div>
+        <div><div style="font-size:.5rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">IN</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:2.2rem;color:var(--muted);line-height:1;">${lastIn??'-'}</div></div>
+      </div>
+      <div style="font-size:.6rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;margin-top:6px;">PROM OUT: ${Math.round(avgOut*10)/10} / IN: ${Math.round(avgIn*10)/10}</div>
+    </div>`;
+  });
+
+  // Line chart builder
+  function makeLineChart(canvasId, cIn, cOut){
+    const vIn=src.map(d=>d[cIn]!==undefined&&d[cIn]!==null?d[cIn]:null);
+    const vOut=src.map(d=>d[cOut]!==undefined&&d[cOut]!==null?d[cOut]:null);
+    const el=document.getElementById(canvasId);
+    const ex=Chart.getChart(el);if(ex)ex.destroy();
+    new Chart(el.getContext('2d'),{
+      type:'line',
+      data:{labels,datasets:[
+        {label:'OUT',data:vOut,borderColor:'#cc2200',backgroundColor:'rgba(204,34,0,.06)',
+          borderWidth:2,pointRadius:4,pointBackgroundColor:'#cc2200',
+          pointBorderColor:'#fff',pointBorderWidth:1.5,pointHoverRadius:6,
+          tension:.3,fill:false,spanGaps:true,
+          datalabels:{display:true,anchor:'top',align:'top',offset:3,
+            color:'#cc2200',font:{size:9,weight:'700'},formatter:v=>v!==null?v:'',clamp:true}},
+        {label:'IN',data:vIn,borderColor:'#0066cc',backgroundColor:'transparent',
+          borderWidth:2,pointRadius:4,pointBackgroundColor:'#0066cc',
+          pointBorderColor:'#fff',pointBorderWidth:1.5,pointHoverRadius:6,
+          tension:.3,fill:false,spanGaps:true,
+          datalabels:{display:true,anchor:'bottom',align:'bottom',offset:3,
+            color:'#0066cc',font:{size:9,weight:'700'},formatter:v=>v!==null?v:'',clamp:true}}
+      ]},
+      options:{responsive:true,maintainAspectRatio:false,
+        interaction:{mode:'index',intersect:false},
+        plugins:{
+          legend:{labels:{color:'#6b7a94',font:{size:10},usePointStyle:true,pointStyle:'circle'}},
+          tooltip:{backgroundColor:'#fff',borderColor:'#d8dde6',borderWidth:1,
+            titleColor:'#1a2035',bodyColor:'#6b7a94',padding:10,
+            callbacks:{afterBody:function(items){
+              const i=items[0].dataIndex,o=vOut[i],n=vIn[i];
+              if(o===null||n===null)return[];
+              return o>n?['✅ OUT > IN']:o===n?['⚠ OUT = IN']:['❌ OUT < IN'];
+            }}}},
+        scales:{
+          x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{color:'#6b7a94',font:{size:10}}},
+          y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{color:'#6b7a94',font:{size:10}},beginAtZero:false}
+        },
+        layout:{padding:{top:32,bottom:24,left:4,right:4}}}
+    });
+  }
+
+  makeLineChart('inout-box-chart','BOX IN','BOX OUT');
+  makeLineChart('inout-piaz-chart','PIAZZALE IN','PIAZZALE OUT');
+
+  // Table
+  document.getElementById('inout-tally').textContent=src.length+' días';
+  const tbody=document.getElementById('inout-tbody');tbody.innerHTML='';
+  [...src].reverse().forEach(d=>{
+    const boxOk=d['BOX OUT']>d['BOX IN'],boxEq=d['BOX OUT']===d['BOX IN'];
+    const piazOk=d['PIAZZALE OUT']>d['PIAZZALE IN'],piazEq=d['PIAZZALE OUT']===d['PIAZZALE IN'];
+    const bc=boxOk?'color:var(--green);font-weight:700':boxEq?'color:var(--orange);font-weight:700':'color:var(--red);font-weight:700';
+    const pc=piazOk?'color:var(--green);font-weight:700':piazEq?'color:var(--orange);font-weight:700':'color:var(--red);font-weight:700';
+    const bDiff=d['BOX OUT']-d['BOX IN'],pDiff=d['PIAZZALE OUT']-d['PIAZZALE IN'];
+    tbody.innerHTML+=`<tr>
+      <td>${d.fecha}</td>
+      <td>${d['BOX IN']??'-'}</td><td>${d['BOX OUT']??'-'}</td>
+      <td style="${bc}">${bDiff>0?'+':''}${bDiff}</td>
+      <td>${d['PIAZZALE IN']??'-'}</td><td>${d['PIAZZALE OUT']??'-'}</td>
+      <td style="${pc}">${pDiff>0?'+':''}${pDiff}</td>
+    </tr>`;
+  });
+}
+
+// IN_OUT HOME CARD
+function renderInOutHomeCard(){
+  const el=document.getElementById('home-inout-vals');if(!el)return;el.innerHTML='';
+  [['BOX','BOX IN','BOX OUT'],['PIAZZALE','PIAZZALE IN','PIAZZALE OUT']].forEach(([name,cIn,cOut])=>{
+    const last=IN_OUT.length?IN_OUT[IN_OUT.length-1]:null;
+    const vIn=last?last[cIn]:null,vOut=last?last[cOut]:null;
+    const ok=vOut!==null&&vIn!==null&&vOut>vIn;
+    const equal=vOut!==null&&vIn!==null&&vOut===vIn;
+    const color=equal?'var(--orange)':ok?'var(--green)':'var(--red)';
+    el.innerHTML+=`<div style="text-align:center;">
+      <div style="font-size:.52rem;color:var(--inout-color);font-family:'Share Tech Mono',monospace;letter-spacing:1px;">${name}</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:3px;">
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">OUT</div>
+          <div style="color:${color};font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">${vOut??'-'}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:.45rem;color:var(--muted2);font-family:'Share Tech Mono',monospace;">IN</div>
+          <div style="color:var(--muted);font-size:1.4rem;font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1;">${vIn??'-'}</div>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
 // ── EXCEL LOADER ──
 function loadExcel(input){
   const file=input.files[0];if(!file)return;
@@ -1089,6 +1293,13 @@ function loadExcel(input){
         return data;
       }
       // Weekly sheets
+      function parseInOut(ws){
+        const rows=XLSX.utils.sheet_to_json(ws,{header:1,raw:true,cellDates:true});
+        const headers=rows[0].map(h=>String(h||'').trim());
+        const data=[];
+        for(let i=1;i<rows.length;i++){const r=rows[i];if(!r||!r[0])continue;let dt=r[0] instanceof Date?r[0]:typeof r[0]==='number'?new Date(Math.round((r[0]-25569)*86400*1000)):new Date(r[0]);if(isNaN(dt))continue;const entry={fecha:dt.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit'}),semana:Math.ceil(((dt-(new Date(dt.getFullYear(),0,1)))/86400000+1)/7)};headers.slice(1).forEach((h,j)=>{const v=r[j+1];entry[h]=v!==undefined&&v!==''?Number(v):null;});data.push(entry);}
+        return data;
+      }
       function parseWeekly(ws){
         const rows=XLSX.utils.sheet_to_json(ws,{header:1,raw:true});
         const headers=rows[0].map(h=>String(h||'').trim());
@@ -1102,6 +1313,7 @@ function loadExcel(input){
       DRR=parseDaily(wb.Sheets['DRR']);
       if(wb.Sheets['DPV'])DPV=parseDaily(wb.Sheets['DPV']);
       if(wb.Sheets['KPPM'])KPPM=parseDaily(wb.Sheets['KPPM']);
+      if(wb.Sheets['IN_OUT'])IN_OUT=parseInOut(wb.Sheets['IN_OUT']);
       if(wb.Sheets['DVX SEMANAL'])DVX_SEM=parseWeekly(wb.Sheets['DVX SEMANAL']);
       if(wb.Sheets['DRR SEMANAL'])DRR_SEM=parseWeekly(wb.Sheets['DRR SEMANAL']);
       initVer();
@@ -1123,6 +1335,7 @@ function downloadHTML(){
   cur=cur.replace(/let DRR  = \[[\s\S]*?\];\n/,'let DRR  = '+JSON.stringify(DRR)+';\n');
   cur=cur.replace(/let DPV   = \[[\s\S]*?\];\n/,'let DPV   = '+JSON.stringify(DPV)+';\n');
   cur=cur.replace(/let KPPM  = \[[\s\S]*?\];\n/,'let KPPM  = '+JSON.stringify(KPPM)+';\n');
+  cur=cur.replace(/let IN_OUT = \[[\s\S]*?\];\n/,'let IN_OUT = '+JSON.stringify(IN_OUT)+';\n');
   cur=cur.replace(/let DVX_SEM = \[[\s\S]*?\];\n/,'let DVX_SEM = '+JSON.stringify(DVX_SEM)+';\n');
   cur=cur.replace(/let DRR_SEM = \[[\s\S]*?\];\n/,'let DRR_SEM = '+JSON.stringify(DRR_SEM)+';\n');
   cur=cur.replace(/Datos: [^·]+ · \d+ chasis/,'Datos: '+ts+' · '+GIRO.length+' chasis');
@@ -1131,7 +1344,6 @@ function downloadHTML(){
   const a=document.createElement('a');a.href=url;a.download='indicadores_'+ds+'.html';
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 }
-// Start on root
 </script>
 
 </body></html>
